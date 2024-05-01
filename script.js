@@ -31,11 +31,6 @@ document.getElementById("signup-form").addEventListener("submit", function(event
     });
 });
 
-// // Redirect to login page when clicking on "Already signed in?" button
-// document.getElementById("login-btn").addEventListener("click", function() {
-//     window.location.href = "/login.html";
-// });
-
 document.getElementById("login-form").addEventListener("submit", function(event) {
     event.preventDefault();
     const email = document.getElementById("login-email").value;
@@ -53,31 +48,41 @@ document.getElementById("login-form").addEventListener("submit", function(event)
     })
     .then(response => {
         if (response.ok) {
-            // Redirect to dashboard page after successful login
-            window.location.href = "/dashboard.html";
+            return response.json(); // Parse response JSON
         } else {
-            response.json().then(data => {
-                document.getElementById("error-msg").innerText = data.detail;
-            });
+            throw new Error('Invalid credentials');
         }
+    })
+    .then(data => {
+        // Store JWT token in local storage
+        localStorage.setItem("access_token", data.access_token);
+        // console.log(data.access_token)
+        // Redirect to dashboard page after successful login
+        window.location.href = "/dashboard.html";
     })
     .catch(error => {
         console.error("Error:", error);
+        // Handle error, such as displaying error message to the user
+        document.getElementById("error-msg").innerText = "Invalid credentials";
     });
 });
 
-function logout() {
-    fetch("http://localhost:8000/logout", { // Replace with your FastAPI backend URL
-        method: "GET"
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = "/";
-        } else {
-            console.error("Logout failed");
-        }
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
-}
+
+// function logout() {
+//     // Remove JWT token from local storage
+//     localStorage.removeItem("access_token");
+
+//     fetch("http://localhost:8000/logout", { // Replace with your FastAPI backend URL
+//         method: "GET"
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             window.location.href = "/index.html";
+//         } else {
+//             console.error("Logout failed");
+//         }
+//     })
+//     .catch(error => {
+//         console.error("Error:", error);
+//     });
+// }
