@@ -1,161 +1,290 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Shipment Creation</title>
   </head>
   <body>
     <div class="container">
-        <h1 >Create Shipment</h1>
-        <div class="error" id="error-msg"></div>
-        <form id="shipment-form">
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="shipment_no" class="form-label">Shipment Number*</label>
-                        <input type="text" class="form-control" id="shipment_no" placeholder="Shipment Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="route_details" class="form-label">Route Details*</label>
-                        <input type="text" class="form-control" id="route_details" placeholder="Route Details" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="device" class="form-label">Device*</label>
-                        <input type="text" class="form-control" id="device" placeholder="Device" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="po_no" class="form-label">PO Number*</label>
-                        <input type="text" class="form-control" id="po_no" placeholder="PO Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="ndc_no" class="form-label">NDC Number*</label>
-                        <input type="text" class="form-control" id="ndc_no" placeholder="NDC Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="serial_no_goods" class="form-label">Serial Number of Goods*</label>
-                        <input type="text" class="form-control" id="serial_no_goods" placeholder="Serial Number of Goods" required>
-                    </div>  
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="container_no" class="form-label">Container Number*</label>
-                        <input type="text" class="form-control" id="container_no" placeholder="Container Number" required>
-                      </div>
-                    <div class="mb-3">
-                        <label for="goods_type" class="form-label">Goods Type*</label>
-                        <input type="text" class="form-control" id="goods_type" placeholder="Goods Type" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="expected_delivery_date" class="form-label">Expected Delivery Date*</label>
-                        <input type="date" class="form-control" id="expected_delivery_date" placeholder="Expected Delivery Date" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="delivery_no" class="form-label">Delivery Number*</label>
-                        <input type="text" class="form-control" id="delivery_no" placeholder="Delivery Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="batch_id" class="form-label">Batch Id*</label>
-                        <input type="text" class="form-control" id="batch_id" placeholder="Batch Id" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="shipment_desc" class="form-label">Shipment Description*</label>
-                        <!-- <input type="text" class="form-control" id="shipment_desc" placeholder="Shipment Description"> -->
-                        <textarea class="form-control" id="shipment_desc" placeholder="Shipment Description" required></textarea>
-                    </div>
-                </div>
+      <h1>Create Shipment</h1>
+      <div class="error" id="error-msg"></div>
+      <form id="shipment-form">
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <label for="shipment_no" class="form-label"
+                >Shipment Number*</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="shipment_no"
+                placeholder="Shipment Number"
+                required
+              />
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">CREATE SHIPMENT</button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-danger" onclick="clearForm()">CLEAR DETAILS</button>
-                    </div>
-                </div>
+            <div class="mb-3">
+              <label for="route_details" class="form-label"
+                >Route Details*</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="route_details"
+                placeholder="Route Details"
+                required
+              />
             </div>
-        </form>
-    </div>
-    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Shipment Created Successfully</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Shipment created successfully!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+            <div class="mb-3">
+              <label for="device" class="form-label">Device*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="device"
+                placeholder="Device"
+                required
+              />
             </div>
+            <div class="mb-3">
+              <label for="po_no" class="form-label">PO Number*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="po_no"
+                placeholder="PO Number"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="ndc_no" class="form-label">NDC Number*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ndc_no"
+                placeholder="NDC Number"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="serial_no_goods" class="form-label"
+                >Serial Number of Goods*</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="serial_no_goods"
+                placeholder="Serial Number of Goods"
+                required
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label for="container_no" class="form-label"
+                >Container Number*</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="container_no"
+                placeholder="Container Number"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="goods_type" class="form-label">Goods Type*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="goods_type"
+                placeholder="Goods Type"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="expected_delivery_date" class="form-label"
+                >Expected Delivery Date*</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="expected_delivery_date"
+                placeholder="Expected Delivery Date"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="delivery_no" class="form-label"
+                >Delivery Number*</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="delivery_no"
+                placeholder="Delivery Number"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="batch_id" class="form-label">Batch Id*</label>
+              <input
+                type="text"
+                class="form-control"
+                id="batch_id"
+                placeholder="Batch Id"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="shipment_desc" class="form-label"
+                >Shipment Description*</label
+              >
+              <textarea
+                class="form-control"
+                id="shipment_desc"
+                placeholder="Shipment Description"
+                required
+              ></textarea>
+            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">
+                CREATE SHIPMENT
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                onclick="clearForm()"
+              >
+                CLEAR DETAILS
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      aria-labelledby="successModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="successModalLabel">
+              Shipment Created Successfully
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            You can view your shipments in <strong>My Shipments</strong>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
-        document.getElementById("shipment-form").addEventListener("submit", function(event) {
+      document
+        .getElementById("shipment-form")
+        .addEventListener("submit", function (event) {
           event.preventDefault();
           const shipment_no = document.getElementById("shipment_no").value;
           const route_details = document.getElementById("route_details").value;
           const device = document.getElementById("device").value;
-          const po_no = document.getElementById("po_no").value; 
+          const po_no = document.getElementById("po_no").value;
           const ndc_no = document.getElementById("ndc_no").value;
-          const serial_no_goods = document.getElementById("serial_no_goods").value;
+          const serial_no_goods =
+            document.getElementById("serial_no_goods").value;
           const container_no = document.getElementById("container_no").value;
           const goods_type = document.getElementById("goods_type").value;
-          const expected_delivery_date = document.getElementById("expected_delivery_date").value;
+          const expected_delivery_date = document.getElementById(
+            "expected_delivery_date"
+          ).value;
           const delivery_no = document.getElementById("delivery_no").value;
           const batch_id = document.getElementById("batch_id").value;
           const shipment_desc = document.getElementById("shipment_desc").value;
-  
-          fetch("http://localhost:8000/createShipment", { // Replace with your FastAPI backend URL
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                shipment_no: shipment_no,
-                route_details: route_details,
-                device: device,
-                po_no: po_no,
-                ndc_no: ndc_no,
-                serial_no_goods: serial_no_goods,
-                container_no: container_no,
-                goods_type: goods_type,
-                expected_delivery_date: expected_delivery_date,
-                delivery_no: delivery_no,
-                batch_id: batch_id,
-                shipment_desc: shipment_desc // Include role in the request body
-              })
+
+          fetch("http://localhost:8000/createShipment", {
+            // Replace with your FastAPI backend URL
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              shipment_no: shipment_no,
+              route_details: route_details,
+              device: device,
+              po_no: po_no,
+              ndc_no: ndc_no,
+              serial_no_goods: serial_no_goods,
+              container_no: container_no,
+              goods_type: goods_type,
+              expected_delivery_date: expected_delivery_date,
+              delivery_no: delivery_no,
+              batch_id: batch_id,
+              shipment_desc: shipment_desc, // Include role in the request body
+            }),
           })
-          .then(response => {
+            .then((response) => {
               if (response.ok) {
                 //   window.location.href = "/dashboard.html";
-                var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+                var myModal = new bootstrap.Modal(
+                  document.getElementById("successModal")
+                );
                 myModal.show();
                 // Clear form fields
                 clearForm();
               } else {
-                  response.json().then(data => {
-                      document.getElementById("error-msg").innerText = data.detail;
-                  });
+                response.json().then((data) => {
+                  document.getElementById("error-msg").innerText = data.detail;
+                });
               }
-          })
-          .catch(error => {
+            })
+            .catch((error) => {
               console.error("Error:", error);
-          });
+            });
         });
 
-        function clearForm() {
-            document.getElementById("shipment-form").reset();
-        }
+      function clearForm() {
+        document.getElementById("shipment-form").reset();
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
